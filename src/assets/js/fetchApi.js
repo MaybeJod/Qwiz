@@ -7,6 +7,6 @@ export default async function fetchApi(url) {
 		console.log("questions are saved in local storage!");
 		return data;
 	} catch (error) {
-		console.trace("An error yo: ", error.message);
+		return console.trace("An error yo: ", error.message);
 	}
 }
