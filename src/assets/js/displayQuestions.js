@@ -1,47 +1,54 @@
 export default function displayQuestions(question) {
 	const questionsSection = document.getElementById("displayQuestion");
+	questionsSection.innerHTML = "";
 
 	// Ensure the input is an array
 	const questions = Array.isArray(question) ? question : [question];
 
-	questions.forEach((questionItem) => {
-		const questionsElement = createQuestionsElement(questionItem);
-		questionsSection.appendChild(questionsElement);
-	});
+	if (questions.length > 0) {
+		const firstQuestion = questions[0];
+		const questionElement = createQuestionsElement(firstQuestion);
+
+		questionsSection.appendChild(questionElement);
+	} else {
+		console.error("No questions available to display!");
+	}
 }
 
-function createQuestionsElement(questionsArray) {
+function createQuestionsElement(questionObject) {
 	const createQuestionArticle = document.createElement("article");
-	createQuestionArticle.classList.add("question");
+	createQuestionArticle.classList.add("questionElement");
 
 	// combines correct and incorrect answers in one array
 	const answers = [
-		questionsArray.correct_answer,
-		...questionsArray.incorrect_answers,
+		questionObject.correct_answer,
+		...questionObject.incorrect_answers,
 	];
 
 	const shuffledAnswerArray = fisherYatesShuffle(answers)
 		.map(
 			(answer, index) =>
-				`<li><button class="answer">${index + 1}. ${answer}</button></li>`
+				`<li><button class="answer" value="${answer}">${
+					index + 1
+				}. ${answer}</button></li>`
 		)
 		.join("");
 
 	createQuestionArticle.innerHTML = `
-			<h2 id="question">${questionsArray.question}</h2>
+			<h2 id="question">${questionObject.question}</h2>
 			<p>
-				<span id="category">${questionsArray.category}</span>
+				<span id="category">${questionObject.category}</span>
 				/
-				<span id="difficulty">${questionsArray.difficulty}</span>
+				<span id="difficulty">${questionObject.difficulty}</span>
 			</p>
-			<div id="answers">
+			<div id="answersContainer">
 				<ul>
 					${shuffledAnswerArray}
 				</ul>
 			</div>
 	`;
 
-	console.log(questionsArray.correct_answer);
+	console.log(questionObject.correct_answer);
 	return createQuestionArticle;
 }
 
