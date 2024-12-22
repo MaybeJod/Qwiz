@@ -25,7 +25,9 @@ function createQuestionsElement(questionObject) {
 		...questionObject.incorrect_answers,
 	];
 
-	const shuffledAnswerArray = fisherYatesShuffle(answers)
+	const shuffledAnswerArray = fisherYatesShuffle(answers);
+
+	const answersElement = shuffledAnswerArray
 		.map(
 			(answer, index) =>
 				`<li><button class="answer" value="${answer}">${
@@ -43,12 +45,12 @@ function createQuestionsElement(questionObject) {
 			</p>
 			<div id="answersContainer">
 				<ul>
-					${shuffledAnswerArray}
+					${answersElement}
 				</ul>
 			</div>
 	`;
 
-	console.log(questionObject.correct_answer);
+	console.log("the correct answer is: " + questionObject.correct_answer);
 	return createQuestionArticle;
 }
 
