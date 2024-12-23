@@ -13,7 +13,6 @@ export async function app() {
 	resetApp();
 	displayQuestions(getQuestions());
 	selectedAnswer();
-	//checkAnswerIsCorrect();
 }
 
 function selectedAnswer() {
@@ -24,16 +23,18 @@ function selectedAnswer() {
 		button.addEventListener("click", () => {
 			selectedAnswer = button.value;
 			console.log("you choose: " + selectedAnswer);
-
 			if (
 				checkAnswer(selectedAnswer, getQuestionAnswer(getQuestions())) === true
 			) {
-				console.log("nice");
 				return selectedAnswer;
-			} else {
-				//const correctAnswer = getQuestions[0].correct_answer;
-				console.log("the correct answer is: ");
 			}
 		});
 	});
+}
+
+function qwizScore() {
+	let correctAnswer = "";
+	let correctscore = 0;
+	let askedCount = 0;
+	let totalQuestions = 3;
 }

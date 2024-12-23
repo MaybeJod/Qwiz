@@ -3,7 +3,7 @@ export default function checkAnswer(selectedAnswer, correctAnswer) {
 		console.log("correct answer");
 		return true;
 	} else {
-		console.log("are you stupid?");
+		console.log("are you stupid? correct answer is: " + correctAnswer);
 		return false;
 	}
 }

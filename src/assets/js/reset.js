@@ -10,7 +10,7 @@ export default async function resetApp() {
 		localStorage.clear();
 		_questionsSection.innerText = "lol";
 
-		const ApiUrl = "https://opentdb.com/api.php?amount=1&type=multiple";
+		const ApiUrl = "https://opentdb.com/api.php?amount=3&type=multiple";
 		await fetchApi(ApiUrl);
 		displayQuestions(getQuestions());
 	});
