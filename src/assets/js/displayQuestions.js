@@ -1,13 +1,13 @@
-export default function displayQuestions(question) {
+export default function displayQuestions(question, questionIndex) {
 	const questionsSection = document.getElementById("displayQuestion");
-	questionsSection.innerHTML = "";
 
 	// Ensure the input is an array
 	const questions = Array.isArray(question) ? question : [question];
 
 	if (questions.length > 0) {
-		const firstQuestion = questions[0];
-		const questionElement = createQuestionsElement(firstQuestion);
+		questionsSection.innerHTML = "";
+		const questionObject = questions[questionIndex];
+		const questionElement = createQuestionsElement(questionObject);
 
 		questionsSection.appendChild(questionElement);
 	} else {
