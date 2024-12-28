@@ -1,7 +1,7 @@
-export default function getQuestionAnswer(questionObject) {
+export default function getQuestionAnswer(questionObject, questionIndex) {
 	if (questionObject) {
 		//console.log("getting questions answer");
-		return questionObject[0].correct_answer;
+		return questionObject[questionIndex].correct_answer;
 	} else {
 		console.log("No questions found in local storage.");
 		return [];

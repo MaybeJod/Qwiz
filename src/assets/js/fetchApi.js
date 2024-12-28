@@ -3,7 +3,7 @@ export default async function fetchApi(url) {
 		const response = await fetch(url);
 
 		if (!response.ok) {
-			throw new Error("failed to fetch questions");
+			throw new Error("failed to fetch questions: " + response.status);
 		}
 
 		const data = await response.json();

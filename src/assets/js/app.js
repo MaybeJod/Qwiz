@@ -11,7 +11,7 @@ import getQuestionAnswer from "./getQuestionAnswer";
 
 const answerButtonElement = document.getElementsByClassName("answer");
 
-let correctscore = 0;
+let correctScore = 0;
 let askedCount = 0;
 let totalQuestions = 3;
 
@@ -19,8 +19,7 @@ export async function app() {
 	resetApp();
 	nextQuestion();
 	displayQuestions(getQuestions(), askedCount);
-	//displayQuestions(getQuestions(), askedCount);
-	//selectedAnswer(answerButtonElement);
+	selectedAnswer(answerButtonElement);
 }
 
 function selectedAnswer(answerButtonElement) {
@@ -31,16 +30,17 @@ function selectedAnswer(answerButtonElement) {
 			selectedAnswer = button.value;
 			console.log("user: " + selectedAnswer);
 			if (
-				checkAnswer(selectedAnswer, getQuestionAnswer(getQuestions())) === true
+				checkAnswer(
+					selectedAnswer,
+					getQuestionAnswer(getQuestions(), askedCount)
+				) === true
 			) {
-				askedCount++;
-				correctscore++;
-				console.log(askedCount);
-				console.log(correctscore);
+				correctScore++;
+				console.log("asked count: " + askedCount + 1);
+				console.log("correct score: " + correctScore);
 				return true;
 			} else {
-				askedCount++;
-				console.log(askedCount);
+				console.log("asked count: " + askedCount + 1);
 				return false;
 			}
 		});
@@ -54,13 +54,6 @@ function nextQuestion() {
 		askedCount++;
 		displayQuestions(getQuestions(), askedCount);
 		selectedAnswer(answerButtonElement);
-		console.log(askedCount + 1);
+		console.log("asked count from button" + askedCount + 1);
 	});
 }
-
-/* function qwizScore() {
-	let correctAnswer = "";
-	let correctscore = 0;
-	let askedCount = 0;
-	let totalQuestions = 3;
-} */
