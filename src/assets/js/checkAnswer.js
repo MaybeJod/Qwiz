@@ -5,7 +5,9 @@ export default function checkAnswer(selectedAnswer, correctAnswer) {
 		console.log("nice it was correct");
 		return true;
 	} else {
-		console.log("are you stupid? correct answer is: " + correctAnswer);
+		console.log(
+			"from check answer, are you stupid? correct answer is: " + correctAnswer
+		);
 		return false;
 	}
 }

@@ -1,6 +1,10 @@
 import fisherYatesShuffle from "./fisherYatesShuffle";
 
-export default function createQuestionsElement(questionObject) {
+export default function createQuestionsElement(
+	questionObject,
+	questionIndex,
+	maxQuestion
+) {
 	const createQuestionArticle = document.createElement("article");
 	createQuestionArticle.classList.add("questionElement");
 
@@ -20,6 +24,7 @@ export default function createQuestionsElement(questionObject) {
 		.join("");
 
 	createQuestionArticle.innerHTML = `
+			<p>question ${questionIndex} / ${maxQuestion}
 			<h2 id="question">${questionObject.question}</h2>
 			<p>
 				<span id="category">${questionObject.category}</span>

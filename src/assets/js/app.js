@@ -28,7 +28,7 @@ function selectedAnswer(answerButtonElement) {
 	Array.from(answerButtonElement).forEach((button) => {
 		button.addEventListener("click", () => {
 			selectedAnswer = button.value;
-			console.log("user: " + selectedAnswer);
+			console.log("user from selected answer: " + selectedAnswer);
 			if (
 				checkAnswer(
 					selectedAnswer,
@@ -36,11 +36,11 @@ function selectedAnswer(answerButtonElement) {
 				) === true
 			) {
 				correctScore++;
-				console.log("asked count: " + askedCount + 1);
+				console.log("asked count from selected answer: " + askedCount);
 				console.log("correct score: " + correctScore);
 				return true;
 			} else {
-				console.log("asked count: " + askedCount + 1);
+				console.log("asked count from selected answer: " + askedCount);
 				return false;
 			}
 		});
@@ -54,6 +54,6 @@ function nextQuestion() {
 		askedCount++;
 		displayQuestions(getQuestions(), askedCount);
 		selectedAnswer(answerButtonElement);
-		console.log("asked count from button" + askedCount + 1);
+		console.log("asked count from button" + askedCount);
 	});
 }

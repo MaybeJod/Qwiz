@@ -9,7 +9,11 @@ export default async function displayQuestions(question, questionIndex) {
 	if (questions.length > 0) {
 		questionsSection.innerHTML = "";
 		const questionObject = questions[questionIndex];
-		const questionElement = createQuestionsElement(questionObject);
+		const questionElement = createQuestionsElement(
+			questionObject,
+			questionIndex + 1,
+			questions.length
+		);
 
 		questionsSection.appendChild(questionElement);
 	} else {
