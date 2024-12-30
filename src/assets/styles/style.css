@@ -1,3 +1,11 @@
 ol {
     list-style-type: upper-alpha;
 }
+
+.correct {
+    background-color: #00ff00;
+}
+
+.incorrect {
+    background-color: #ff0000;
+}

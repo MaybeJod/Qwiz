@@ -15,7 +15,7 @@ let correctScore = 0;
 let askedCount = 0;
 let totalQuestions = 3;
 
-export async function app() {
+export function app() {
 	resetApp();
 	nextQuestion();
 	displayQuestions(getQuestions(), askedCount);
@@ -23,24 +23,25 @@ export async function app() {
 }
 
 function selectedAnswer(answerButtonElement) {
-	let selectedAnswer = "";
-
 	Array.from(answerButtonElement).forEach((button) => {
 		button.addEventListener("click", () => {
-			selectedAnswer = button.value;
-			console.log("user from selected answer: " + selectedAnswer);
+			console.log("user from selected answer: " + button.value);
 			if (
 				checkAnswer(
-					selectedAnswer,
+					button.value,
 					getQuestionAnswer(getQuestions(), askedCount)
 				) === true
 			) {
 				correctScore++;
 				console.log("asked count from selected answer: " + askedCount);
 				console.log("correct score: " + correctScore);
+				answerButtonElement.disabled = true;
+				button.classList.add("correct");
 				return true;
 			} else {
 				console.log("asked count from selected answer: " + askedCount);
+				answerButtonElement.disabled = true;
+				button.classList.add("incorrect");
 				return false;
 			}
 		});
@@ -52,8 +53,12 @@ function nextQuestion() {
 
 	nextQuestionButton.addEventListener("click", () => {
 		askedCount++;
-		displayQuestions(getQuestions(), askedCount);
-		selectedAnswer(answerButtonElement);
-		console.log("asked count from button" + askedCount);
+		if (askedCount < totalQuestions) {
+			displayQuestions(getQuestions(), askedCount);
+			selectedAnswer(answerButtonElement);
+			console.log("asked count from button " + askedCount);
+		} else {
+			alert(`qwiz over, your score: ${correctScore}`);
+		}
 	});
 }
