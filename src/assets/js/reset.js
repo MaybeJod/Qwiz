@@ -12,6 +12,6 @@ export default async function resetApp() {
 
 		const ApiUrl = "https://opentdb.com/api.php?amount=3&type=multiple";
 		await fetchApi(ApiUrl);
-		displayQuestions(getQuestions());
+		await displayQuestions(getQuestions(), 0);
 	});
 }

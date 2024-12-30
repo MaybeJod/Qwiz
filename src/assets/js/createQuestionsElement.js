@@ -8,7 +8,7 @@ export default function createQuestionsElement(
 	const createQuestionArticle = document.createElement("article");
 	createQuestionArticle.classList.add("questionElement");
 
-	// combines correct and incorrect answers in one array
+	// Combine correct and incorrect answers into one array
 	const answers = [
 		questionObject.correct_answer,
 		...questionObject.incorrect_answers,
@@ -24,7 +24,7 @@ export default function createQuestionsElement(
 		.join("");
 
 	createQuestionArticle.innerHTML = `
-			<p>question ${questionIndex} / ${maxQuestion}
+			<p>question ${questionIndex} / ${maxQuestion}</p>
 			<h2 id="question">${questionObject.question}</h2>
 			<p>
 				<span id="category">${questionObject.category}</span>
@@ -38,6 +38,7 @@ export default function createQuestionsElement(
 			</div>
 	`;
 
-	console.log("the correct answer is: " + questionObject.correct_answer);
+	console.log("The correct answer is:", questionObject.correct_answer);
+
 	return createQuestionArticle;
 }

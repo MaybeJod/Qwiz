@@ -2,7 +2,7 @@ import createQuestionsElement from "./createQuestionsElement";
 
 export default async function displayQuestions(question, questionIndex) {
 	const questionsSection = document.getElementById("displayQuestion");
-
+	questionsSection.innerHTML = "";
 	// Ensure the input is an array
 	const questions = Array.isArray(question) ? question : [question];
 
