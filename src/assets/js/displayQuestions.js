@@ -17,6 +17,6 @@ export default async function displayQuestions(question, questionIndex) {
 
 		questionsSection.appendChild(questionElement);
 	} else {
-		console.error("No questions available to display!");
+		console.warn("No questions available to display!, click 'qwiz me button'");
 	}
 }
